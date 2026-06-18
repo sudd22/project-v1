@@ -288,9 +288,132 @@ kbd{
   .code-body{font-size:12px;padding:12px 14px}
   th,td{padding:10px 14px;font-size:14px}
 }
+
+/* ============================================================ */
+/* ANIMATED PARTICLE-NETWORK BACKGROUND                          */
+/* ============================================================ */
+#bg-canvas{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;display:block;
+  opacity:.55;
+}
+/* keep textual noise layer above the canvas but below content */
+body::before{z-index:1}
+.main{z-index:2}
+.sidebar{z-index:100}
+
+/* ============================================================ */
+/* HERO — ANIMATED KUBERNETES HELM WHEEL + ORBITING PODS         */
+/* ============================================================ */
+.hero{overflow:hidden}
+.hero-anim{
+  position:relative;width:240px;height:240px;margin:0 auto 28px;
+  display:flex;align-items:center;justify-content:center;
+}
+/* soft pulsing glow behind the wheel */
+.hero-anim::before{
+  content:'';position:absolute;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,229,255,.22) 0%,rgba(179,136,255,.10) 45%,transparent 70%);
+  animation:heroPulse 5s ease-in-out infinite;
+}
+@keyframes heroPulse{0%,100%{transform:scale(.92);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+
+/* the rotating k8s helm wheel */
+.k8s-wheel{
+  width:150px;height:150px;position:relative;z-index:2;
+  animation:wheelSpin 28s linear infinite;
+  filter:drop-shadow(0 0 14px rgba(0,229,255,.45));
+}
+.k8s-wheel .spoke-line{stroke:var(--cyan);stroke-width:5;stroke-linecap:round}
+.k8s-wheel .heptagon{fill:none;stroke:url(#wheelGrad);stroke-width:7;stroke-linejoin:round}
+.k8s-wheel .hub{fill:var(--bg-deepest);stroke:var(--cyan);stroke-width:4}
+.k8s-wheel .hub-dot{fill:var(--cyan)}
+@keyframes wheelSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* orbiting pods (counter-rotating rings of container "pods") */
+.orbit{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.orbit-ring{position:absolute;border-radius:50%;border:1px dashed rgba(136,136,160,.18)}
+.orbit-ring.r1{width:200px;height:200px;animation:orbitSpin 18s linear infinite}
+.orbit-ring.r2{width:240px;height:240px;animation:orbitSpin 26s linear infinite reverse}
+.pod{
+  position:absolute;top:-7px;left:50%;width:14px;height:14px;margin-left:-7px;
+  border-radius:4px;box-shadow:0 0 10px currentColor;
+}
+.pod.cyan{background:var(--cyan);color:var(--cyan)}
+.pod.purple{background:var(--purple);color:var(--purple)}
+.pod.rose{background:var(--rose);color:var(--rose)}
+.pod.green{background:var(--green);color:var(--green)}
+.pod.amber{background:var(--amber);color:var(--amber)}
+.orbit-ring.r1 .pod:nth-child(2){top:auto;bottom:-7px}
+.orbit-ring.r2 .pod:nth-child(2){left:auto;right:-7px;top:50%;margin-top:-7px}
+.orbit-ring.r2 .pod:nth-child(3){left:-7px;top:50%;margin-top:-7px}
+@keyframes orbitSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ============================================================ */
+/* DESIGN MICRO-INTERACTIONS (in existing style)                 */
+/* ============================================================ */
+/* code blocks: subtle lift + cyan edge on hover */
+.code-block{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+.code-block:hover{border-color:var(--border-light);box-shadow:0 8px 30px rgba(0,0,0,.45),0 0 0 1px rgba(0,229,255,.12);transform:translateY(-2px)}
+
+/* callouts gently rise on hover */
+.callout{transition:transform .25s ease,box-shadow .25s ease}
+.callout:hover{transform:translateX(2px)}
+
+/* flashcards: glow lift */
+.flashcard{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.flashcard:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.45);border-color:var(--border-light)}
+
+/* sidebar active link gets a soft glow */
+.nav-link.active{box-shadow:inset 0 0 18px rgba(0,229,255,.06)}
+
+/* animated weight bars: start empty, fill when revealed */
+.weight-fill{width:0 !important;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.weight-fill.filled{width:var(--target-w) !important}
+/* shimmering sheen across the fill */
+.weight-bar{position:relative}
+.weight-bar::after{
+  content:'';position:absolute;inset:0;border-radius:4px;pointer-events:none;
+  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);
+  background-size:220% 100%;animation:sheen 3.4s ease-in-out infinite;
+}
+@keyframes sheen{0%{background-position:160% 0}60%,100%{background-position:-60% 0}}
+
+/* hero badges: gentle entrance + glow on hover */
+.hero-badge{transition:transform .2s ease,box-shadow .2s ease}
+.hero-badge:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,229,255,.25)}
+
+/* gradient progress bar gets a soft glow */
+#progress-bar{box-shadow:0 0 10px rgba(179,136,255,.5)}
+
+/* section headings underline accent on reveal */
+.content-section.visible .section-header{animation:none}
+
+/* floating scroll cue under hero */
+.scroll-cue{
+  display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:8px;
+  color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;animation:cueFloat 2.2s ease-in-out infinite;
+}
+.scroll-cue .chev{width:14px;height:14px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(45deg)}
+@keyframes cueFloat{0%,100%{transform:translateY(0);opacity:.65}50%{transform:translateY(7px);opacity:1}}
+
+/* ============================================================ */
+/* RESPECT REDUCED MOTION                                        */
+/* ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  .k8s-wheel,.orbit-ring,.hero-anim::before,.scroll-cue,.weight-bar::after,
+  .hero h1{animation:none !important}
+  #bg-canvas{display:none}
+  .content-section{opacity:1;transform:none}
+  *{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
+
+<!-- ANIMATED PARTICLE-NETWORK BACKGROUND -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
 <div id="progress-bar"></div>
 
@@ -353,6 +476,42 @@ kbd{
 <!-- HERO -->
 <!-- ============================================================ -->
 <div class="hero">
+  <div class="hero-anim">
+    <div class="orbit">
+      <div class="orbit-ring r1">
+        <span class="pod cyan"></span>
+        <span class="pod rose"></span>
+      </div>
+      <div class="orbit-ring r2">
+        <span class="pod purple"></span>
+        <span class="pod green"></span>
+        <span class="pod amber"></span>
+      </div>
+    </div>
+    <svg class="k8s-wheel" viewBox="0 0 100 100" role="img" aria-label="Animated Kubernetes helm wheel">
+      <defs>
+        <linearGradient id="wheelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00e5ff"/>
+          <stop offset="55%" stop-color="#b388ff"/>
+          <stop offset="100%" stop-color="#ff4081"/>
+        </linearGradient>
+      </defs>
+      <!-- outer heptagon (ship's-wheel motif of the Kubernetes logo) -->
+      <polygon class="heptagon" points="50,8 87.4,26 96.6,66.5 70.7,98.8 29.3,98.8 3.4,66.5 12.6,26"/>
+      <!-- seven spokes radiating from the hub -->
+      <g>
+        <line class="spoke-line" x1="50" y1="50" x2="50" y2="14"/>
+        <line class="spoke-line" x1="50" y1="50" x2="78.1" y2="28.4"/>
+        <line class="spoke-line" x1="50" y1="50" x2="71.6" y2="63.5"/>
+        <line class="spoke-line" x1="50" y1="50" x2="57.8" y2="84.3"/>
+        <line class="spoke-line" x1="50" y1="50" x2="42.2" y2="84.3"/>
+        <line class="spoke-line" x1="50" y1="50" x2="28.4" y2="63.5"/>
+        <line class="spoke-line" x1="50" y1="50" x2="21.9" y2="28.4"/>
+      </g>
+      <circle class="hub" cx="50" cy="50" r="13"/>
+      <circle class="hub-dot" cx="50" cy="50" r="4.5"/>
+    </svg>
+  </div>
   <h1>Certified Kubernetes<br>Administrator Mastery</h1>
   <p class="subtitle">The definitive, beginner-to-exam-ready guide covering every topic on the CKA v1.36 curriculum — with every command explained character by character.</p>
   <div class="hero-badges">
@@ -360,6 +519,10 @@ kbd{
     <span class="hero-badge badge-purple">Pass: 66%</span>
     <span class="hero-badge badge-amber">Duration: 2 Hours</span>
     <span class="hero-badge badge-green">Cost: $445 USD</span>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll to begin</span>
+    <span class="chev"></span>
   </div>
 </div>
 
@@ -390,6 +553,7 @@ kbd{
         <tr><td><strong>Cost</strong></td><td>$445 USD (one exam registration)</td></tr>
         <tr><td><strong>Validity</strong></td><td>2 years from the date of passing</td></tr>
         <tr><td><strong>Attempts</strong></td><td>2 attempts included with one registration (one year to schedule)</td></tr>
+        <tr><td><strong>Practice Simulator</strong></td><td>Registration includes free access to two <strong>Killer.sh</strong> CKA simulator sessions — use them, the real exam is easier than killer.sh</td></tr>
         <tr><td><strong>Environment</strong></td><td>Online, proctored remotely via PSI browser</td></tr>
         <tr><td><strong>Allowed Resources</strong></td><td>Official Kubernetes documentation and related pages (one additional browser tab)</td></tr>
       </tbody>
@@ -1525,7 +1689,7 @@ crictl pull nginx:1.25</div>
     <span class="domain-badge badge-cyan">DOMAIN 1 — 25%</span>
     <h2 class="gradient-text">Cluster Architecture, Installation &amp; Configuration</h2>
     <p class="section-intro">This domain covers RBAC, kubeadm-based cluster installation, cluster lifecycle management, high availability, Helm, Kustomize, extension interfaces, and CRDs.</p>
-    <div class="weight-bar"><div class="weight-fill" style="width:25%;background:var(--cyan)"></div></div>
+    <div class="weight-bar"><div class="weight-fill" style="--target-w:25%;background:var(--cyan)"></div></div>
   </div>
 
   <h3>Role-Based Access Control (RBAC)</h3>
@@ -2201,7 +2365,7 @@ kubectl get backups</div>
     <span class="domain-badge badge-amber">DOMAIN 2 — 15%</span>
     <h2 class="gradient-text">Workloads &amp; Scheduling</h2>
     <p class="section-intro">This domain covers pods, deployments, configmaps, secrets, resource management, autoscaling, and pod scheduling.</p>
-    <div class="weight-bar"><div class="weight-fill" style="width:15%;background:var(--amber)"></div></div>
+    <div class="weight-bar"><div class="weight-fill" style="--target-w:15%;background:var(--amber)"></div></div>
   </div>
 
   <h3>Pods</h3>
@@ -2630,7 +2794,7 @@ kubectl get priorityclasses</div>
     <span class="domain-badge badge-green">DOMAIN 3 — 20%</span>
     <h2 class="gradient-text">Services &amp; Networking</h2>
     <p class="section-intro">This domain covers the Kubernetes networking model, service types, Ingress, Gateway API, Network Policies, and CoreDNS.</p>
-    <div class="weight-bar"><div class="weight-fill" style="width:20%;background:var(--green)"></div></div>
+    <div class="weight-bar"><div class="weight-fill" style="--target-w:20%;background:var(--green)"></div></div>
   </div>
 
   <h3>The Kubernetes Networking Model</h3>
@@ -2961,7 +3125,7 @@ kubectl get configmap coredns -n kube-system -o yaml</div>
     <span class="domain-badge badge-purple">DOMAIN 4 — 10%</span>
     <h2 class="gradient-text">Storage</h2>
     <p class="section-intro">This domain covers volumes, PersistentVolumes, PersistentVolumeClaims, StorageClasses, and dynamic provisioning.</p>
-    <div class="weight-bar"><div class="weight-fill" style="width:10%;background:var(--purple)"></div></div>
+    <div class="weight-bar"><div class="weight-fill" style="--target-w:10%;background:var(--purple)"></div></div>
   </div>
 
   <h3>Volumes</h3>
@@ -3144,7 +3308,7 @@ kubectl get configmap coredns -n kube-system -o yaml</div>
     <span class="domain-badge badge-rose">DOMAIN 5 — 30%</span>
     <h2 class="gradient-text">Troubleshooting</h2>
     <p class="section-intro">This is the highest-weighted domain at 30%. You must master systematic troubleshooting for control plane, nodes, applications, networking, and storage.</p>
-    <div class="weight-bar"><div class="weight-fill" style="width:30%;background:var(--rose)"></div></div>
+    <div class="weight-bar"><div class="weight-fill" style="--target-w:30%;background:var(--rose)"></div></div>
   </div>
 
   <h3>The Troubleshooting Methodology</h3>
@@ -3569,7 +3733,7 @@ kubectl config use-context cluster1</div>
 
 <div class="section-divider"></div>
 
-<section id="exam-strategy" class="content-section">
+<section id="exam-strategy-continued" class="content-section">
   <div class="section-header">
     <span class="domain-badge badge-teal">STRATEGY (CONTINUED)</span>
     <h2 class="gradient-text">Exam Day Strategy — Verification &amp; Common Pitfalls</h2>
@@ -4811,6 +4975,112 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// ============================================================
+// Animated weight bars — fill when their section scrolls in
+// ============================================================
+const weightFills = document.querySelectorAll('.weight-fill');
+const weightObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('filled');
+      weightObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+weightFills.forEach(bar => weightObserver.observe(bar));
+
+// ============================================================
+// Ambient particle-network background (themed, offline, performant)
+// ============================================================
+(function particleNetwork(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas || prefersReduced) { if (canvas) canvas.style.display = 'none'; return; }
+  const ctx = canvas.getContext('2d');
+  const palette = ['0,229,255', '179,136,255', '255,64,129', '0,230,118', '29,233,182'];
+  let w, h, dpr, nodes = [], running = true, mouse = { x: -9999, y: -9999 };
+
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildNodes();
+  }
+
+  function buildNodes(){
+    // density scales with viewport area, capped for performance
+    const count = Math.min(90, Math.max(34, Math.round((w * h) / 22000)));
+    nodes = [];
+    for (let i = 0; i < count; i++){
+      nodes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.32,
+        vy: (Math.random() - 0.5) * 0.32,
+        r: Math.random() * 1.8 + 1.2,
+        c: palette[(Math.random() * palette.length) | 0],
+        pulse: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function frame(){
+    if (!running) return;
+    ctx.clearRect(0, 0, w, h);
+    const linkDist = 132;
+    for (let i = 0; i < nodes.length; i++){
+      const n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+      n.pulse += 0.02;
+
+      // gentle attraction toward the cursor for interactivity
+      const mdx = mouse.x - n.x, mdy = mouse.y - n.y;
+      const md = Math.hypot(mdx, mdy);
+      if (md < 160){ n.x += (mdx / md) * 0.45; n.y += (mdy / md) * 0.45; }
+
+      // connecting lines
+      for (let j = i + 1; j < nodes.length; j++){
+        const m = nodes[j];
+        const dx = n.x - m.x, dy = n.y - m.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < linkDist){
+          const a = (1 - dist / linkDist) * 0.4;
+          ctx.strokeStyle = 'rgba(' + n.c + ',' + a.toFixed(3) + ')';
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y); ctx.lineTo(m.x, m.y); ctx.stroke();
+        }
+      }
+      // the node itself (pod) with a soft pulse + glow
+      const glow = 0.55 + Math.sin(n.pulse) * 0.25;
+      ctx.fillStyle = 'rgba(' + n.c + ',' + glow.toFixed(3) + ')';
+      ctx.shadowColor = 'rgba(' + n.c + ',0.8)';
+      ctx.shadowBlur = 8;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', size, { passive: true });
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  window.addEventListener('mouseout', () => { mouse.x = -9999; mouse.y = -9999; });
+  // pause the loop when the tab is hidden to save CPU/battery
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden;
+    if (running) requestAnimationFrame(frame);
+  });
+
+  size();
+  requestAnimationFrame(frame);
+})();
 </script>
 
 </body>
