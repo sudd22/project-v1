@@ -21,3 +21,5 @@ Designed disaster recovery plan using cross-region S3 replication, RDS automated
 
 Automated SSL certificate management with ACM for CloudFront distributions and Application Load Balancers, enforcing HTTPS redirect policies and TLS 1.2 minimum across all customer-facing endpoints.
 
+Created reusable Terraform modules for standardizing S3 buckets, IAM roles, and CloudWatch log groups across dev, staging, and production accounts using AWS Organizations and SCP guardrails.
+
