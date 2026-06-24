@@ -9,3 +9,5 @@ dynamo cache
 gitactions
 Built a CI/CD pipeline on AWS CodePipeline that pulls from GitHub, runs tests in CodeBuild, and deploys container images to ECS Fargate using blue-green deployment strategy for zero downtime releases.
 
+Provisioned VPC networking with Terraform including public and private subnets across two availability zones, NAT gateways, security groups, and Route53 records for internal service discovery.
+
