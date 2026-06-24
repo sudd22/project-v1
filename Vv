@@ -23,3 +23,5 @@ Automated SSL certificate management with ACM for CloudFront distributions and A
 
 Created reusable Terraform modules for standardizing S3 buckets, IAM roles, and CloudWatch log groups across dev, staging, and production accounts using AWS Organizations and SCP guardrails.
 
+Migrated legacy on-prem Jenkins jobs to GitHub Actions with OIDC authentication to AWS, eliminating long-lived access keys and enabling temporary role assumption for secure deployments.
+
