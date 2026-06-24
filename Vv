@@ -13,3 +13,5 @@ Provisioned VPC networking with Terraform including public and private subnets a
 
 Configured Amazon EKS cluster with managed node groups, AWS Load Balancer Controller, and cluster autoscaler to scale Kubernetes workloads based on CPU and memory metrics during peak traffic.
 
+Implemented infrastructure monitoring using CloudWatch dashboards, custom metrics from Lambda functions, SNS alerts for high error rates, and X-Ray tracing across distributed microservices architecture.
+
