@@ -19,3 +19,5 @@ Set up AWS Secrets Manager integration with ECS task definitions and Parameter S
 
 Designed disaster recovery plan using cross-region S3 replication, RDS automated backups with point-in-time recovery, and documented runbooks for failover testing quarterly across production environments.
 
+Automated SSL certificate management with ACM for CloudFront distributions and Application Load Balancers, enforcing HTTPS redirect policies and TLS 1.2 minimum across all customer-facing endpoints.
+
