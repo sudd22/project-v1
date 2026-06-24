@@ -15,3 +15,5 @@ Configured Amazon EKS cluster with managed node groups, AWS Load Balancer Contro
 
 Implemented infrastructure monitoring using CloudWatch dashboards, custom metrics from Lambda functions, SNS alerts for high error rates, and X-Ray tracing across distributed microservices architecture.
 
+Set up AWS Secrets Manager integration with ECS task definitions and Parameter Store for environment-specific configuration, removing hardcoded credentials from application code and deployment manifests entirely.
+
