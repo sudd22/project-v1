@@ -11,3 +11,5 @@ Built a CI/CD pipeline on AWS CodePipeline that pulls from GitHub, runs tests in
 
 Provisioned VPC networking with Terraform including public and private subnets across two availability zones, NAT gateways, security groups, and Route53 records for internal service discovery.
 
+Configured Amazon EKS cluster with managed node groups, AWS Load Balancer Controller, and cluster autoscaler to scale Kubernetes workloads based on CPU and memory metrics during peak traffic.
+
