@@ -17,3 +17,5 @@ Implemented infrastructure monitoring using CloudWatch dashboards, custom metric
 
 Set up AWS Secrets Manager integration with ECS task definitions and Parameter Store for environment-specific configuration, removing hardcoded credentials from application code and deployment manifests entirely.
 
+Designed disaster recovery plan using cross-region S3 replication, RDS automated backups with point-in-time recovery, and documented runbooks for failover testing quarterly across production environments.
+
