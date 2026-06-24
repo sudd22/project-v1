@@ -25,3 +25,5 @@ Created reusable Terraform modules for standardizing S3 buckets, IAM roles, and 
 
 Migrated legacy on-prem Jenkins jobs to GitHub Actions with OIDC authentication to AWS, eliminating long-lived access keys and enabling temporary role assumption for secure deployments.
 
+Optimized ECS Fargate task sizing using Container Insights metrics, right-sizing CPU and memory allocation reduced monthly compute costs while maintaining p99 latency under two hundred milliseconds.
+
