@@ -7,3 +7,5 @@ zcd
 dynamodb
 dynamo cache
 gitactions
+Built a CI/CD pipeline on AWS CodePipeline that pulls from GitHub, runs tests in CodeBuild, and deploys container images to ECS Fargate using blue-green deployment strategy for zero downtime releases.
+
