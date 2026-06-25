@@ -27,3 +27,5 @@ Migrated legacy on-prem Jenkins jobs to GitHub Actions with OIDC authentication 
 
 Optimized ECS Fargate task sizing using Container Insights metrics, right-sizing CPU and memory allocation reduced monthly compute costs while maintaining p99 latency under two hundred milliseconds.
 
+EKS node group autoscaling review.
+
