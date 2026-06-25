@@ -14,7 +14,26 @@
   --cyan:#00e5ff;--amber:#ffb300;--green:#00e676;--rose:#ff4081;--purple:#b388ff;--orange:#ff9100;--teal:#1de9b6;
   --text-bright:#f0f0ff;--text-primary:#ccccdd;--text-secondary:#8888a0;--text-muted:#505068;
   --border:#252545;--border-light:#353560;
+  --sidebar-w:DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CKA Mastery — The Complete Certified Kubernetes Administrator Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deepest:#04040e;--bg-deep:#080816;--bg-main:#0c0c1a;--bg-surface:#111128;--bg-elevated:#181838;--bg-hover:#20204a;
+  --cyan:#00e5ff;--amber:#ffb300;--green:#00e676;--rose:#ff4081;--purple:#b388ff;--orange:#ff9100;--teal:#1de9b6;
+  --text-bright:#f0f0ff;--text-primary:#ccccdd;--text-secondary:#8888a0;--text-muted:#505068;
+  --border:#252545;--border-light:#353560;
   --sidebar-w:290px;
+}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--border-light) var(--bg-deep)}
+::-webkit-scrollbar{width:8p
 }
 html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--border-light) var(--bg-deep)}
 ::-webkit-scrollbar{width:8px}
@@ -35,7 +54,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 /* PROGRESS BAR */
 #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--rose));z-index:1000;transition:width .15s ease;width:0}
 
-/* SIDEBAR */
+font-family:'Crimson Pro',Georgia,serif;font-size:18px;line-height:1.75;
+  color:var(--text-primary);background:var(--bg-deepest);
+  background-image:
+    radial-gradient(ellipse at 15% 10%,rgba(0,229,255,.04) 0%,transparent 50%),
+    radial-gradient(ellipse at 85% 30%,rgba(179,136,255,.04) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 80%,rgba(255,64,129,.03) 0%,transparent 50%);
+  min-height:100vh; SIDEBAR */
 .sidebar{
   position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;
   background:var(--bg-deep);border-right:1px solid var(--border);
