@@ -29,3 +29,5 @@ Optimized ECS Fargate task sizing using Container Insights metrics, right-sizing
 
 EKS node group autoscaling review.
 
+Terraform state backend on S3.
+
