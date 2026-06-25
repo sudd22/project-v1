@@ -480,3 +480,4 @@ Limited time means ruthless prioritization. If a week slips, protect these in or
 *Last reviewed: June 2026*
 *Practice labs weekly.*
 *kubectl cheat sheet linked.*
+*Mock exam schedule set.*
