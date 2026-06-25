@@ -31,3 +31,5 @@ EKS node group autoscaling review.
 
 Terraform state backend on S3.
 
+ArgoCD sync policy notes.
+
