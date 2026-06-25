@@ -475,3 +475,6 @@ Limited time means ruthless prioritization. If a week slips, protect these in or
 - **You only need 66%.** Bank the easy points, verify them, and don't tunnel on one hard task.
 
 > **You've got 128 hours. Spend ~90 of them with your fingers on the keyboard, and you will pass.** Good luck! 🍀
+
+---
+*Last reviewed: June 2026*
