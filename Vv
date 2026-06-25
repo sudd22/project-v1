@@ -29,4 +29,5 @@ Terraform state backend on S3.
 ArgoCD sync policy notes.
 
 CloudWatch alarm thresholds.
+the cdn should be on the edge.
 
