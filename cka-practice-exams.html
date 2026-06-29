@@ -1733,7 +1733,12 @@ pv-db   5Gi        RWO            </span><span class="ok">Retain</span><span cla
 <span class="prompt">root@node01:~$</span> <span class="cmd">systemctl is-active kubelet</span>
 <span class="ok">active</span>
 <span class="prompt">root@controlplane:~$</span> <span class="cmd">k get node node01</span>
-<span class="out">node01   </span><span class="ok">Ready</span><span class="out">    &lt;none&gt;   40d   v1.36.0</span></div>
+<span class="out">node01   </keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* perspective grid floor */
+.bg-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(120,140,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,140,220,.05) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradie<span class="ok">Ready</span><span class="out">    &lt;none&gt;   40d   v1.36.0</span></div>
       </div>
       <div class="step-label exp">Explanation — in plain words</div>
       <p>The kubelet reads its settings from <code>/var/lib/kubelet/config.yaml</code> and its service flags from <code>/var/lib/kubelet/kubeadm-flags.env</code>. A malformed config (bad YAML, wrong cgroup driver, invalid path) makes the kubelet crash on boot — so it never reports Ready.</p>
