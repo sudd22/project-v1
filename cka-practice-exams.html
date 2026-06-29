@@ -436,7 +436,12 @@ footer .big{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:70
       <div class="q-task">
         <div class="lbl">Task</div>
         <p>Node <code>node01</code> needs a kernel patch. Evict all workloads from it gracefully (ignoring DaemonSets and deleting any emptyDir pods), keep new pods from scheduling on it, then after maintenance mark it schedulable again.</p>
-      </div>
+      </keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+/* perspective grid floor */
+.bg-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(120,140,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,140,220,.05) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradie
 
       <div class="step-label sol">Solution — terminal</div>
       <div class="term">
