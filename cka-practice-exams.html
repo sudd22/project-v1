@@ -3578,7 +3578,7 @@ secure-app   0/1     </span><span class="err">CreateContainerConfigError</span><
 <span class="prompt">root@controlplane:~$</span> <span class="comment"># the policy demands non-root, but the image starts as UID 0.</span>
 <span class="comment"># Set a non-root UID in securityContext (image must support it):</span></div>
       </div>
-      <div class="term">
+      <div class="runAsNonRoot
         <div class="term-bar"><span class="b r"></span><span class="b y"></span><span class="b g"></span><span class="ttl">fix — securityContext</span><span class="tag">manifest</span></div>
         <div class="term-body">  <span class="yk">securityContext</span>:
     <span class="yk">runAsNonRoot</span>: <span class="yv">true</span>
